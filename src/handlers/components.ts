@@ -33,12 +33,21 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       },
     };
   }
-  if (customId === 'welcome_anti_scam') {
+  if (customId === 'welcome_music_bot') {
     return {
       type: 4,
       data: {
         flags: 64,
-        content: `🚨 **Pencegahan Scam & Keamanan:**\nKeamanan kamu adalah prioritas utama kami. Harap selalu ingat tips keamanan penting berikut:\n1. ⚠️ **JANGAN PERNAH** membagikan password, kode autentikasi token, atau OTP kamu kepada siapa pun.\n2. 🚫 **Waspada DM mencurigakan** dari bot palsu atau pengguna tak dikenal yang menawarkan hadiah gratis (Nitro gratis, crypto, dll).\n3. 🛡️ Staff resmi **TIDAK AKAN PERNAH** meminta password kamu atau menyuruh kamu mengklik link mencurigakan.\n4. ⚠️ Laporkan langsung ke Moderator jika menemukan indikasi penipuan!`,
+        content: `🎵 **Cara Memutar Musik dengan Pancake Bot:**\n\n` +
+                 `Ikuti langkah-langkah mudah berikut untuk memutar musik di voice channel Droid Server:\n\n` +
+                 `1. 🔊 **Masuk ke Voice Channel:** Silahkan join ke salah satu voice channel terlebih dahulu.\n` +
+                 `2. 🎶 **Gunakan Perintah Play:** Ketik perintah di bawah ini di text channel musik:\n` +
+                 `   \`p!play [Nama Lagu atau Link YouTube/Spotify]\`\n` +
+                 `   *(Contoh: \`p!play Lathi\` atau \`p!play https://www.youtube.com/watch?v=...\`)*\n` +
+                 `3. ⏭️ **Skip Lagu:** Ketik \`p!skip\` untuk melompati lagu saat ini.\n` +
+                 `4. ⏸️ **Pause & Resume:** Ketik \`p!pause\` untuk menjeda dan \`p!resume\` untuk melanjutkan.\n` +
+                 `5. ⏹️ **Stop Musik:** Ketik \`p!stop\` jika ingin menghentikan musik dan mengeluarkan bot.\n\n` +
+                 `Selamat mendengarkan! 🎧`,
       },
     };
   }

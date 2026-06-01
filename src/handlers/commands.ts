@@ -169,10 +169,10 @@ export function handleSetupStartCommand(_interaction: DiscordInteraction): Disco
             },
             {
               type: 2, // Button
-              style: 4, // Danger (Red)
-              custom_id: 'welcome_anti_scam',
-              label: 'Pencegahan Scam',
-              emoji: { name: '🚨' }
+              style: 1, // Primary (Blurple)
+              custom_id: 'welcome_music_bot',
+              label: 'Bot Command',
+              emoji: { name: '🎵' }
             }
           ]
         }
