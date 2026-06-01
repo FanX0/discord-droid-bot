@@ -1,12 +1,18 @@
-import { DiscordInteraction, DiscordResponse } from '../types/discord';
-import { GENDER_ROLES, MOBILE_GAME_ROLES, PC_GAME_ROLES } from '../config/roles';
-import { addRoleToMember, removeRoleFromMember } from '../services/discord-api';
+import { DiscordInteraction, DiscordResponse } from "../types/discord";
+import {
+  GENDER_ROLES,
+  MOBILE_GAME_ROLES,
+  PC_GAME_ROLES,
+} from "../config/roles";
+import { addRoleToMember, removeRoleFromMember } from "../services/discord-api";
 
-export async function handleComponentInteraction(interaction: DiscordInteraction): Promise<DiscordResponse> {
+export async function handleComponentInteraction(
+  interaction: DiscordInteraction,
+): Promise<DiscordResponse> {
   const customId = interaction.data?.custom_id;
 
   // Handle Welcome Embed Button Interactions
-  if (customId === 'welcome_droid') {
+  if (customId === "welcome_droid") {
     return {
       type: 4,
       data: {
@@ -15,16 +21,16 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       },
     };
   }
-  if (customId === 'welcome_roles_info') {
+  if (customId === "welcome_roles_info") {
     return {
       type: 4,
       data: {
         flags: 64,
-        content: `👤 **Panduan Roles Info:**\nKamu bisa menyesuaikan profile kamu dengan mengambil roles di channel khusus kami di sini: <#827508832041173042>.\n\nSilahkan kunjungi channel tersebut untuk memilih gender role dan gaming role yang kamu inginkan!`,
+        content: `👤 **Panduan Roles Info:**\nUntuk memilih role, Silahkan pilih Role Catalog yang tersedia di sini: <#827508832041173042>`,
       },
     };
   }
-  if (customId === 'welcome_official_link') {
+  if (customId === "welcome_official_link") {
     return {
       type: 4,
       data: {
@@ -33,47 +39,53 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       },
     };
   }
-  if (customId === 'welcome_music_bot') {
+  if (customId === "welcome_music_bot") {
     return {
       type: 4,
       data: {
         flags: 64,
-        content: `🎵 **Cara Memutar Musik di Droid Server:**\n\n` +
-                 `Kami menyediakan berbagai pilihan Music Bot menarik untuk menemani kamu:\n\n` +
-                 `🥞 **1. Pancake Bot (Prefix: \`p!\`)**\n` +
-                 `- 🎶 **Play Lagu:** \`p!play [Nama Lagu / Link YouTube]\` *(Contoh: \`p!play Lathi\`)*\n` +
-                 `- ⏭️ **Skip Lagu:** \`p!skip\` (Melompati lagu)\n` +
-                 `- ⏹️ **Stop Musik:** \`p!stop\` (Mengeluarkan bot)\n\n` +
-                 `🎧 **2. Jockie Music (Prefix: \`m!\`)**\n` +
-                 `- 🎶 **Play Lagu:** \`m!play [Nama Lagu / Link Spotify]\` *(Contoh: \`m!play Starboy\`)*\n` +
-                 `- ⏭️ **Skip Lagu:** \`m!skip\` (Melompati lagu)\n` +
-                 `- ⏹️ **Stop Musik:** \`m!stop\` (Mengeluarkan bot)\n\n` +
-                 `📻 **3. Lofi Radio (Slash Commands)**\n` +
-                 `- 🎶 **Start Radio:** \`/play\` (Memulai siaran Lofi Radio 24/7)\n` +
-                 `- ⏹️ **Stop Radio:** \`/stop\` (Menghentikan radio)\n\n` +
-                 `☁️ **4. Soundcloud Bot (Slash Commands)**\n` +
-                 `- 🎶 **Play Lagu:** \`/play [Nama Lagu / Link Soundcloud]\`\n` +
-                 `- ⏭️ **Skip Lagu:** \`/skip\` (Melompati lagu)\n` +
-                 `- ⏹️ **Stop Musik:** \`/stop\` (Mengeluarkan bot)\n\n` +
-                 `⚠️ *Catatan: Anda harus bergabung ke salah satu Voice Channel terlebih dahulu sebelum memanggil bot musik di atas!*`,
+        content:
+          `🎵 **Cara Memutar Musik di Droid Server:**\n\n` +
+          `Kami menyediakan berbagai pilihan Music Bot menarik untuk menemani kamu:\n\n` +
+          `🥞 **1. Pancake Bot (Prefix: \`p!\`)**\n` +
+          `- 🎶 **Play Lagu:** \`p!play [Nama Lagu / Link YouTube]\` *(Contoh: \`p!play Lathi\`)*\n` +
+          `- ⏭️ **Skip Lagu:** \`p!skip\` (Melompati lagu)\n` +
+          `- ⏹️ **Stop Musik:** \`p!stop\` (Mengeluarkan bot)\n\n` +
+          `🎧 **2. Jockie Music (Prefix: \`m!\`)**\n` +
+          `- 🎶 **Play Lagu:** \`m!play [Nama Lagu / Link Spotify]\` *(Contoh: \`m!play Starboy\`)*\n` +
+          `- ⏭️ **Skip Lagu:** \`m!skip\` (Melompati lagu)\n` +
+          `- ⏹️ **Stop Musik:** \`m!stop\` (Mengeluarkan bot)\n\n` +
+          `📻 **3. Lofi Radio (Slash Commands)**\n` +
+          `- 🎶 **Start Radio:** \`/play\` (Memulai siaran Lofi Radio 24/7)\n` +
+          `- ⏹️ **Stop Radio:** \`/stop\` (Menghentikan radio)\n\n` +
+          `☁️ **4. Soundcloud Bot (Slash Commands)**\n` +
+          `- 🎶 **Play Lagu:** \`/play [Nama Lagu / Link Soundcloud]\`\n` +
+          `- ⏭️ **Skip Lagu:** \`/skip\` (Melompati lagu)\n` +
+          `- ⏹️ **Stop Musik:** \`/stop\` (Mengeluarkan bot)\n\n` +
+          `⚠️ *Catatan: Anda harus bergabung ke salah satu Voice Channel terlebih dahulu sebelum memanggil bot musik di atas!*`,
       },
     };
   }
 
-  let selectedRolesConfig: readonly { label: string; value: string; description: string; emoji: { name: string } }[] = [];
+  let selectedRolesConfig: readonly {
+    label: string;
+    value: string;
+    description: string;
+    emoji: { name: string };
+  }[] = [];
 
-  if (customId === 'role_select_gender') {
+  if (customId === "role_select_gender") {
     selectedRolesConfig = GENDER_ROLES;
-  } else if (customId === 'role_select_mobile') {
+  } else if (customId === "role_select_mobile") {
     selectedRolesConfig = MOBILE_GAME_ROLES;
-  } else if (customId === 'role_select_pc') {
+  } else if (customId === "role_select_pc") {
     selectedRolesConfig = PC_GAME_ROLES;
   } else {
     return {
       type: 4,
       data: {
         flags: 64, // Ephemeral
-        content: 'Unknown component interaction.',
+        content: "Unknown component interaction.",
       },
     };
   }
@@ -86,7 +98,7 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       type: 4,
       data: {
         flags: 64, // Ephemeral
-        content: 'This interaction can only be used in a Discord Server.',
+        content: "This interaction can only be used in a Discord Server.",
       },
     };
   }
@@ -96,35 +108,49 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
   const currentMemberRoleIds = member.roles || [];
 
   // Filter out assignable roles list to prevent illegal role manipulation
-  const assignableRoleIds: string[] = selectedRolesConfig.map(role => role.value as string);
+  const assignableRoleIds: string[] = selectedRolesConfig.map(
+    (role) => role.value as string,
+  );
 
   // Determine roles to add: selected by user, but they don't already have
   const rolesToAdd = selectedRoleIds.filter(
-    roleId => assignableRoleIds.includes(roleId) && !currentMemberRoleIds.includes(roleId)
+    (roleId) =>
+      assignableRoleIds.includes(roleId) &&
+      !currentMemberRoleIds.includes(roleId),
   );
 
   // Determine roles to remove: not selected by user, but they currently have, and are managed by this select category
   const rolesToRemove = assignableRoleIds.filter(
-    roleId => !selectedRoleIds.includes(roleId) && currentMemberRoleIds.includes(roleId)
+    (roleId) =>
+      !selectedRoleIds.includes(roleId) &&
+      currentMemberRoleIds.includes(roleId),
   );
 
   try {
-    const addPromises = rolesToAdd.map(roleId => addRoleToMember(guildId, userId, roleId));
-    const removePromises = rolesToRemove.map(roleId => removeRoleFromMember(guildId, userId, roleId));
-    
+    const addPromises = rolesToAdd.map((roleId) =>
+      addRoleToMember(guildId, userId, roleId),
+    );
+    const removePromises = rolesToRemove.map((roleId) =>
+      removeRoleFromMember(guildId, userId, roleId),
+    );
+
     await Promise.all([...addPromises, ...removePromises]);
 
     // Construct response details
-    const addedRoleLabels = selectedRolesConfig.filter(r => rolesToAdd.includes(r.value)).map(r => r.label);
-    const removedRoleLabels = selectedRolesConfig.filter(r => rolesToRemove.includes(r.value)).map(r => r.label);
+    const addedRoleLabels = selectedRolesConfig
+      .filter((r) => rolesToAdd.includes(r.value))
+      .map((r) => r.label);
+    const removedRoleLabels = selectedRolesConfig
+      .filter((r) => rolesToRemove.includes(r.value))
+      .map((r) => r.label);
 
-    let content = 'No roles were modified.';
+    let content = "No roles were modified.";
     if (addedRoleLabels.length > 0 && removedRoleLabels.length > 0) {
-      content = `Added: **${addedRoleLabels.join(', ')}**\nRemoved: **${removedRoleLabels.join(', ')}**`;
+      content = `Added: **${addedRoleLabels.join(", ")}**\nRemoved: **${removedRoleLabels.join(", ")}**`;
     } else if (addedRoleLabels.length > 0) {
-      content = `Added: **${addedRoleLabels.join(', ')}**`;
+      content = `Added: **${addedRoleLabels.join(", ")}**`;
     } else if (removedRoleLabels.length > 0) {
-      content = `Removed: **${removedRoleLabels.join(', ')}**`;
+      content = `Removed: **${removedRoleLabels.join(", ")}**`;
     }
 
     return {
@@ -135,7 +161,7 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       },
     };
   } catch (error: any) {
-    console.error('Error modifying member roles:', error);
+    console.error("Error modifying member roles:", error);
     return {
       type: 4,
       data: {
