@@ -48,13 +48,13 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
                  `- 🎶 **Play Lagu:** \`m!play [Nama Lagu / Link Spotify]\` *(Contoh: \`m!play Starboy\`)*\n` +
                  `- ⏭️ **Skip Lagu:** \`m!skip\` (Melompati lagu)\n` +
                  `- ⏹️ **Stop Musik:** \`m!stop\` (Mengeluarkan bot)\n\n` +
-                 `📻 **3. Lofi Radio (Prefix: \`lofi!\`)**\n` +
-                 `- 🎶 **Start Radio:** \`lofi!play\` (Memulai siaran Lofi Radio 24/7)\n` +
-                 `- ⏹️ **Stop Radio:** \`lofi!stop\` (Menghentikan radio)\n\n` +
-                 `☁️ **4. Soundcloud Bot (Prefix: \`sc!\`)**\n` +
-                 `- 🎶 **Play Lagu:** \`sc!play [Nama Lagu / Link Soundcloud]\`\n` +
-                 `- ⏭️ **Skip Lagu:** \`sc!skip\` (Melompati lagu)\n` +
-                 `- ⏹️ **Stop Musik:** \`sc!stop\` (Mengeluarkan bot)\n\n` +
+                 `📻 **3. Lofi Radio (Slash Commands)**\n` +
+                 `- 🎶 **Start Radio:** \`/play\` (Memulai siaran Lofi Radio 24/7)\n` +
+                 `- ⏹️ **Stop Radio:** \`/stop\` (Menghentikan radio)\n\n` +
+                 `☁️ **4. Soundcloud Bot (Slash Commands)**\n` +
+                 `- 🎶 **Play Lagu:** \`/play [Nama Lagu / Link Soundcloud]\`\n` +
+                 `- ⏭️ **Skip Lagu:** \`/skip\` (Melompati lagu)\n` +
+                 `- ⏹️ **Stop Musik:** \`/stop\` (Mengeluarkan bot)\n\n` +
                  `⚠️ *Catatan: Anda harus bergabung ke salah satu Voice Channel terlebih dahulu sebelum memanggil bot musik di atas!*`,
       },
     };
