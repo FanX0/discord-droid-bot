@@ -27,9 +27,41 @@ import handler from '../api/interactions';
 
 const PORT = process.env.PORT || 3001;
 
-const server = http.createServer((req, res) => {
-  // Delegate all requests to the Vercel handler
-  handler(req, res);
+const server = http.createServer(async (req, res) => {
+  // Convert Node.js IncomingMessage to Web Request for the Edge handler
+  const url = `http://localhost:${PORT}${req.url}`;
+  
+  // Create a stream from the Node request
+  const bodyStream = req.method !== 'GET' && req.method !== 'HEAD' ? new ReadableStream({
+    start(controller) {
+      req.on('data', chunk => controller.enqueue(chunk));
+      req.on('end', () => controller.close());
+      req.on('error', err => controller.error(err));
+    }
+  }) : undefined;
+
+  const request = new Request(url, {
+    method: req.method,
+    headers: req.headers as HeadersInit,
+    body: bodyStream,
+    // @ts-ignore - Required for Node.js fetch with custom streams
+    duplex: 'half'
+  });
+
+  try {
+    const response = await handler(request);
+    
+    // Convert Web Response back to Node.js ServerResponse
+    response.headers.forEach((value, key) => {
+      res.setHeader(key, value);
+    });
+    res.statusCode = response.status;
+    res.end(await response.text());
+  } catch (error) {
+    console.error(error);
+    res.statusCode = 500;
+    res.end('Internal Server Error');
+  }
 });
 
 server.listen(PORT, () => {
