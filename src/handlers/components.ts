@@ -69,11 +69,51 @@ export async function handleComponentInteraction(
     };
   }
   if (customId === 'rules_agree') {
+    const guildId = interaction.guild_id;
+    const member = interaction.member;
+    const verifiedRoleId = process.env.VERIFIED_ROLE_ID;
+
+    if (!guildId || !member) {
+      return {
+        type: 4,
+        data: {
+          flags: 64,
+          content: '❌ Interaksi ini hanya bisa digunakan di dalam server.',
+        },
+      };
+    }
+
+    // Check if user already has the verified role
+    if (verifiedRoleId && member.roles.includes(verifiedRoleId)) {
+      return {
+        type: 4,
+        data: {
+          flags: 64,
+          content: '✅ Kamu sudah terverifikasi sebelumnya! Selamat menikmati server **Droid**! 🎉',
+        },
+      };
+    }
+
+    if (verifiedRoleId) {
+      try {
+        await addRoleToMember(guildId, member.user.id, verifiedRoleId);
+      } catch (error: any) {
+        console.error('Error assigning verified role:', error);
+        return {
+          type: 4,
+          data: {
+            flags: 64,
+            content: `❌ **Gagal memberikan role Verified:**\n\`${error?.message || error}\`\n\nPastikan role Bot berada di atas role Verified di Server Settings > Roles.`,
+          },
+        };
+      }
+    }
+
     return {
       type: 4,
       data: {
         flags: 64,
-        content: `🎉 **Terima kasih telah membaca dan menyetujui Rules!**\nSelamat datang secara resmi di **Droid Server**! Silahkan jelajahi server, ikuti diskusi, patuhi peraturan, dan bersenang-senanglah bersama anggota lainnya! 🚀`,
+        content: `🎉 **Terima kasih telah membaca dan menyetujui Rules!**\nKamu telah mendapatkan role **Verified** ✅\n\nSelamat datang secara resmi di **Droid Server**! Silahkan jelajahi server, ikuti diskusi, patuhi peraturan, dan bersenang-senanglah bersama anggota lainnya! 🚀`,
       },
     };
   }
