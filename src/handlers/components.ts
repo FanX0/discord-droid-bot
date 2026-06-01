@@ -121,7 +121,7 @@ export async function handleComponentInteraction(
       type: 4,
       data: {
         flags: 64,
-        content: `🔗 **Official Links:**\n- 🌐 Website: [Droid](https://droid.com)`,
+        content: `🔗 **Official Links:**\n- 🌐 Website: [Droid](https://droid-gamma.vercel.app/)`,
       },
     };
   }
