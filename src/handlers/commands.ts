@@ -1,23 +1,8 @@
 import { DiscordInteraction, DiscordResponse } from '../types/discord';
-import { GENDER_ROLES, MOBILE_GAME_ROLES, PC_GAME_ROLES } from '../config/roles';
+import { GENDER_ROLES, MOBILE_GAME_ROLES, PC_GAME_ROLES, BANNERS } from '../config/roles';
 
-export function handleSetupRolesCommand(_interaction: DiscordInteraction): DiscordResponse {
-  // Construct options for each group
-  const genderOptions = GENDER_ROLES.map(role => ({
-    label: role.label,
-    value: role.value,
-    description: role.description,
-    emoji: role.emoji
-  }));
-
-  const mobileOptions = MOBILE_GAME_ROLES.map(role => ({
-    label: role.label,
-    value: role.value,
-    description: role.description,
-    emoji: role.emoji
-  }));
-
-  const pcOptions = PC_GAME_ROLES.map(role => ({
+export function handleSetupGenderCommand(_interaction: DiscordInteraction): DiscordResponse {
+  const options = GENDER_ROLES.map(role => ({
     label: role.label,
     value: role.value,
     description: role.description,
@@ -29,68 +14,105 @@ export function handleSetupRolesCommand(_interaction: DiscordInteraction): Disco
     data: {
       embeds: [
         {
-          title: '🎭 Server Role Directory',
-          description: 'Customize your profile by selecting the roles that match you! Choose from the dropdown menus below.',
+          title: '🙋‍♂️ Profile Gender Selection',
+          description: 'Silahkan pilih gender kamu dibawah ini untuk mendapatkan role gender!',
           color: 0x5865F2, // Discord Blurple
-          fields: [
-            {
-              name: '🙋‍♂️ Gender Roles',
-              value: 'Select your preferred gender identity.',
-              inline: false
-            },
-            {
-              name: '📱 Mobile Games',
-              value: 'Select the mobile games you play.',
-              inline: false
-            },
-            {
-              name: '🖥️ PC & Console Games',
-              value: 'Select the PC or Console games you play.',
-              inline: false
-            }
-          ]
+          image: {
+            url: BANNERS.GENDER
+          }
         },
       ],
       components: [
-        // Dropdown 1: Gender
         {
           type: 1, // ActionRow
           components: [
             {
               type: 3, // StringSelect
               custom_id: 'role_select_gender',
-              placeholder: '🙋‍♂️ Choose Gender...',
+              placeholder: 'Choose your gender...',
               min_values: 0,
-              max_values: 1, // Enforce single selection maximum
-              options: genderOptions,
+              max_values: 1, // Single choice
+              options: options,
             },
           ],
         },
-        // Dropdown 2: Mobile Games
+      ],
+    },
+  };
+}
+
+export function handleSetupMobileGamesCommand(_interaction: DiscordInteraction): DiscordResponse {
+  const options = MOBILE_GAME_ROLES.map(role => ({
+    label: role.label,
+    value: role.value,
+    description: role.description,
+    emoji: role.emoji
+  }));
+
+  return {
+    type: 4,
+    data: {
+      embeds: [
         {
-          type: 1, // ActionRow
+          title: '📱 Mobile Games Catalog',
+          description: 'Silahkan pilih roles sesuai dengan keinginan kamu untuk mengakses channel yang tersedia dibawah sini!',
+          color: 0x2ECC71, // Green
+          image: {
+            url: BANNERS.MOBILE_GAMES
+          }
+        },
+      ],
+      components: [
+        {
+          type: 1,
           components: [
             {
-              type: 3, // StringSelect
+              type: 3,
               custom_id: 'role_select_mobile',
-              placeholder: '📱 Choose Mobile Games...',
+              placeholder: 'Choose Mobile Games...',
               min_values: 0,
-              max_values: mobileOptions.length,
-              options: mobileOptions,
+              max_values: options.length,
+              options: options,
             },
           ],
         },
-        // Dropdown 3: PC Games
+      ],
+    },
+  };
+}
+
+export function handleSetupPcGamesCommand(_interaction: DiscordInteraction): DiscordResponse {
+  const options = PC_GAME_ROLES.map(role => ({
+    label: role.label,
+    value: role.value,
+    description: role.description,
+    emoji: role.emoji
+  }));
+
+  return {
+    type: 4,
+    data: {
+      embeds: [
         {
-          type: 1, // ActionRow
+          title: '🖥️ PC & Console Games Catalog',
+          description: 'Silahkan pilih roles sesuai dengan keinginan kamu untuk mengakses channel yang tersedia dibawah sini!',
+          color: 0x9B59B6, // Purple
+          image: {
+            url: BANNERS.PC_GAMES
+          }
+        },
+      ],
+      components: [
+        {
+          type: 1,
           components: [
             {
-              type: 3, // StringSelect
+              type: 3,
               custom_id: 'role_select_pc',
-              placeholder: '🖥️ Choose PC Games...',
+              placeholder: 'Choose PC Games...',
               min_values: 0,
-              max_values: pcOptions.length,
-              options: pcOptions,
+              max_values: options.length,
+              options: options,
             },
           ],
         },

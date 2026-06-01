@@ -55,6 +55,12 @@ export const PC_GAME_ROLES = [
   },
 ] as const;
 
+export const BANNERS = {
+  GENDER: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200', // Elegant community/profile banner
+  MOBILE_GAMES: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200', // Mobile/General gaming banner
+  PC_GAMES: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200', // PC gaming banner
+} as const;
+
 export const DISCORD_CONFIG = {
   get publicKey() {
     const val = process.env.DISCORD_PUBLIC_KEY;

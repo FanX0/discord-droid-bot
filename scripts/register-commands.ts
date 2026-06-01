@@ -26,34 +26,47 @@ try {
 
 import { DISCORD_CONFIG } from '../src/config/roles';
 
-const SETUP_ROLES_COMMAND = {
-  name: 'setup-roles',
-  description: 'Spawns the dropdown select menu for self-assigning server roles',
-  default_member_permissions: '8', // ADMINISTRATOR permission required to setup roles
-  dm_permission: false,
-};
+const COMMANDS = [
+  {
+    name: 'setup-gender',
+    description: 'Spawns the dropdown select menu for self-assigning gender roles',
+    default_member_permissions: '8', // ADMINISTRATOR permission required to setup roles
+    dm_permission: false,
+  },
+  {
+    name: 'setup-mobile-games',
+    description: 'Spawns the dropdown select menu for self-assigning mobile game roles',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
+  {
+    name: 'setup-pc-games',
+    description: 'Spawns the dropdown select menu for self-assigning PC game roles',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
+];
 
 async function registerCommands() {
   const { applicationId, botToken, guildId } = DISCORD_CONFIG;
 
-  // If GUILD_ID is provided, register as a guild command (updates instantly).
-  // Otherwise, register as a global command (takes up to 1 hour to propagate).
+  // Bulk overwrite endpoint (PUT) cleanly registers all new commands and deletes old ones
   const endpoint = guildId
     ? `/applications/${applicationId}/guilds/${guildId}/commands`
     : `/applications/${applicationId}/commands`;
 
   const url = `https://discord.com/api/v10${endpoint}`;
 
-  console.log(`Registering command setup-roles to: ${url}...`);
+  console.log(`Bulk registering commands to: ${url}...`);
 
   try {
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         Authorization: `Bot ${botToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(SETUP_ROLES_COMMAND),
+      body: JSON.stringify(COMMANDS),
     });
 
     if (!response.ok) {
@@ -62,9 +75,9 @@ async function registerCommands() {
     }
 
     const data = await response.json();
-    console.log('✅ Command registered successfully!', data);
+    console.log('✅ Commands registered successfully!', data);
   } catch (error) {
-    console.error('❌ Failed to register command:', error);
+    console.error('❌ Failed to register commands:', error);
     process.exit(1);
   }
 }

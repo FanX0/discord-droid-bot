@@ -47,6 +47,7 @@ export interface DiscordResponse {
       description?: string;
       color?: number;
       fields?: Array<{ name: string; value: string; inline?: boolean }>;
+      image?: { url: string };
     }>;
     allowed_mentions?: { parse: string[] };
     flags?: number; // 64 = EPHEMERAL
