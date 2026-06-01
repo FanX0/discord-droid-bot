@@ -16,19 +16,19 @@ export const GENDER_ROLES = [
 export const MOBILE_GAME_ROLES = [
   {
     label: "Mobile Legends",
-    value: "445566778899001122", // Replace with your actual Mobile Legends Role ID
+    value: "1510978678065074207", // Replace with your actual Mobile Legends Role ID
     description: "Play Mobile Legends: Bang Bang",
     emoji: { name: "⚔️" },
   },
   {
     label: "Free Fire",
-    value: "445566778899001123", // Replace with your actual Free Fire Role ID
+    value: "1510978813327311062", // Replace with your actual Free Fire Role ID
     description: "Play Garena Free Fire",
     emoji: { name: "🔫" },
   },
   {
     label: "PUBG Mobile",
-    value: "445566778899001124", // Replace with your actual PUBG Mobile Role ID
+    value: "1510978954738008196", // Replace with your actual PUBG Mobile Role ID
     description: "Play PUBG Mobile",
     emoji: { name: "🪂" },
   },
@@ -56,9 +56,12 @@ export const PC_GAME_ROLES = [
 ] as const;
 
 export const BANNERS = {
-  GENDER: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200', // Elegant community/profile banner
-  MOBILE_GAMES: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200', // Mobile/General gaming banner
-  PC_GAMES: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200', // PC gaming banner
+  GENDER:
+    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200", // Elegant community/profile banner
+  MOBILE_GAMES:
+    "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200", // Mobile/General gaming banner
+  PC_GAMES:
+    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200", // PC gaming banner
 } as const;
 
 export const DISCORD_CONFIG = {

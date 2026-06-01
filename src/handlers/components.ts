@@ -79,13 +79,13 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
         content: `✅ Roles updated successfully!\n\n${content}`,
       },
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error modifying member roles:', error);
     return {
       type: 4,
       data: {
         flags: 64,
-        content: `❌ An error occurred while updating your roles. Please contact an administrator.`,
+        content: `❌ **Failed to update roles:**\n\`${error?.message || error}\`\n\n**Common Solutions:**\n1. Go to **Server Settings > Roles** and drag your Bot's role to the **very top** (above the roles it is assigning).\n2. Ensure Vercel Environment Variables (\`DISCORD_BOT_TOKEN\`) are configured correctly in Vercel Dashboard.\n3. Make sure the role IDs in \`src/config/roles.ts\` are completely correct and match your server roles.`,
       },
     };
   }
