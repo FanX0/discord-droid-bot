@@ -1,0 +1,87 @@
+import fs from 'fs';
+import path from 'path';
+
+// Load .env manually if it exists
+try {
+  const envPath = path.resolve(process.cwd(), '.env');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf-8');
+    for (const line of envContent.split(/\r?\n/)) {
+      // Ignore comments and empty lines
+      if (line.trim().startsWith('#') || !line.includes('=')) continue;
+      const delimiterIndex = line.indexOf('=');
+      const key = line.slice(0, delimiterIndex).trim();
+      let value = line.slice(delimiterIndex + 1).trim();
+      
+      // Strip quotes if present
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      process.env[key] = value;
+    }
+  }
+} catch (error) {
+  console.warn('Warning: Could not read .env file', error);
+}
+
+import { DISCORD_CONFIG } from '../src/config/roles';
+
+const SETUP_ROLES_COMMAND = {
+  name: 'setup-roles',
+  description: 'Spawns the dropdown select menu for self-assigning server roles',
+  default_member_permissions: '8', // ADMINISTRATOR permission required to setup roles
+  dm_permission: false,
+};
+
+async function registerCommands() {
+  const { applicationId, botToken, guildId } = DISCORD_CONFIG;
+
+  // If GUILD_ID is provided, register as a guild command (updates instantly).
+  // Otherwise, register as a global command (takes up to 1 hour to propagate).
+  const endpoint = guildId
+    ? `/applications/${applicationId}/guilds/${guildId}/commands`
+    : `/applications/${applicationId}/commands`;
+
+  const url = `https://discord.com/api/v10${endpoint}`;
+
+  console.log(`Registering command setup-roles to: ${url}...`);
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bot ${botToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(SETUP_ROLES_COMMAND),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP Error ${response.status} ${response.statusText} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    console.log('✅ Command registered successfully!', data);
+  } catch (error) {
+    console.error('❌ Failed to register command:', error);
+    process.exit(1);
+  }
+}
+
+// Ensure required environment variables are set before running
+try {
+  // Accessing getters to trigger check errors
+  DISCORD_CONFIG.applicationId;
+  DISCORD_CONFIG.botToken;
+} catch (error: any) {
+  console.error(`❌ Setup Error: ${error.message}`);
+  console.log('\nMake sure you have created your .env file with the following variables:');
+  console.log('DISCORD_APPLICATION_ID');
+  console.log('DISCORD_BOT_TOKEN');
+  console.log('DISCORD_PUBLIC_KEY');
+  console.log('GUILD_ID (optional, but highly recommended for fast command testing)');
+  process.exit(1);
+}
+
+registerCommands();
