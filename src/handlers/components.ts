@@ -29,7 +29,7 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       type: 4,
       data: {
         flags: 64,
-        content: `🔗 **Official Links:**\n- 🌐 Website: [Droid](https://droid.com)\n- 📱 TikTok: [@droid](https://tiktok.com/@droid)\n- 📸 Instagram: [@droid](https://instagram.com/droid)\n- 🎥 YouTube: [Droid Channel](https://youtube.com/@droid)`,
+        content: `🔗 **Official Links:**\n- 🌐 Website: [Droid](https://droid.com)`,
       },
     };
   }
