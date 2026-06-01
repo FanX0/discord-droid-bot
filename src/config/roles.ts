@@ -109,7 +109,7 @@ export const DOMICILE_ROLES = [
   },
   {
     label: "Jawa Timur",
-    value: "1511001067775594497", // Replace with actual role ID
+    value: "1511004830812995585", // Replace with actual role ID
     description: "Asal domisili Jawa Timur",
     emoji: { name: "🌋" },
   },
