@@ -38,16 +38,24 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       type: 4,
       data: {
         flags: 64,
-        content: `🎵 **Cara Memutar Musik dengan Pancake Bot:**\n\n` +
-                 `Ikuti langkah-langkah mudah berikut untuk memutar musik di voice channel Droid Server:\n\n` +
-                 `1. 🔊 **Masuk ke Voice Channel:** Silahkan join ke salah satu voice channel terlebih dahulu.\n` +
-                 `2. 🎶 **Gunakan Perintah Play:** Ketik perintah di bawah ini di text channel musik:\n` +
-                 `   \`p!play [Nama Lagu atau Link YouTube/Spotify]\`\n` +
-                 `   *(Contoh: \`p!play Lathi\` atau \`p!play https://www.youtube.com/watch?v=...\`)*\n` +
-                 `3. ⏭️ **Skip Lagu:** Ketik \`p!skip\` untuk melompati lagu saat ini.\n` +
-                 `4. ⏸️ **Pause & Resume:** Ketik \`p!pause\` untuk menjeda dan \`p!resume\` untuk melanjutkan.\n` +
-                 `5. ⏹️ **Stop Musik:** Ketik \`p!stop\` jika ingin menghentikan musik dan mengeluarkan bot.\n\n` +
-                 `Selamat mendengarkan! 🎧`,
+        content: `🎵 **Cara Memutar Musik di Droid Server:**\n\n` +
+                 `Kami menyediakan berbagai pilihan Music Bot menarik untuk menemani kamu:\n\n` +
+                 `🥞 **1. Pancake Bot (Prefix: \`p!\`)**\n` +
+                 `- 🎶 **Play Lagu:** \`p!play [Nama Lagu / Link YouTube]\` *(Contoh: \`p!play Lathi\`)*\n` +
+                 `- ⏭️ **Skip Lagu:** \`p!skip\` (Melompati lagu)\n` +
+                 `- ⏹️ **Stop Musik:** \`p!stop\` (Mengeluarkan bot)\n\n` +
+                 `🎧 **2. Jockie Music (Prefix: \`m!\`)**\n` +
+                 `- 🎶 **Play Lagu:** \`m!play [Nama Lagu / Link Spotify]\` *(Contoh: \`m!play Starboy\`)*\n` +
+                 `- ⏭️ **Skip Lagu:** \`m!skip\` (Melompati lagu)\n` +
+                 `- ⏹️ **Stop Musik:** \`m!stop\` (Mengeluarkan bot)\n\n` +
+                 `📻 **3. Lofi Radio (Prefix: \`lofi!\`)**\n` +
+                 `- 🎶 **Start Radio:** \`lofi!play\` (Memulai siaran Lofi Radio 24/7)\n` +
+                 `- ⏹️ **Stop Radio:** \`lofi!stop\` (Menghentikan radio)\n\n` +
+                 `☁️ **4. Soundcloud Bot (Prefix: \`sc!\`)**\n` +
+                 `- 🎶 **Play Lagu:** \`sc!play [Nama Lagu / Link Soundcloud]\`\n` +
+                 `- ⏭️ **Skip Lagu:** \`sc!skip\` (Melompati lagu)\n` +
+                 `- ⏹️ **Stop Musik:** \`sc!stop\` (Mengeluarkan bot)\n\n` +
+                 `⚠️ *Catatan: Anda harus bergabung ke salah satu Voice Channel terlebih dahulu sebelum memanggil bot musik di atas!*`,
       },
     };
   }
