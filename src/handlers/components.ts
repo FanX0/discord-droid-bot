@@ -20,7 +20,7 @@ export async function handleComponentInteraction(interaction: DiscordInteraction
       type: 4,
       data: {
         flags: 64,
-        content: `👤 **Panduan Roles Info:**\nKamu bisa menyesuaikan profile kamu dengan mengambil roles di channel khusus kami:\n- Ambil gender role kamu di command \`/setup-gender\`.\n- Ambil gaming catalog role kamu di \`/setup-mobile-games\` & \`/setup-pc-games\`!\n\nSetiap role yang kamu pilih akan membuka akses ke channel dan forum spesifik yang seru!`,
+        content: `👤 **Panduan Roles Info:**\nKamu bisa menyesuaikan profile kamu dengan mengambil roles di channel khusus kami di sini: <#827508832041173042>.\n\nSilahkan kunjungi channel tersebut untuk memilih gender role dan gaming role yang kamu inginkan!`,
       },
     };
   }

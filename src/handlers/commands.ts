@@ -133,7 +133,7 @@ export function handleSetupStartCommand(_interaction: DiscordInteraction): Disco
             'Channel ini bertujuan untuk membantu para **Droids** untuk memahami lebih lanjut mengenai **Droid** dan menjawab pertanyaan yang sering diajukan!\n\n' +
             '**Let\'s get started!**\n' +
             'Jika kamu belum membaca **Rules** kami, silahkan kunjungi #📜 | rules\n\n' +
-            'Silahkan pilih **Genre Catalog** yang tersedia di sini #👑 | select-roles\n\n' +
+            'Silahkan pilih **Genre Catalog** yang tersedia di sini: <#827508832041173042>\n\n' +
             'Jika kamu ingin check **Official Links** kita, mengetahui apa itu Droid, memahami lebih lanjut server **Droid** dan mendapatkan beberapa tips yang sangat berguna untuk **Mencegah Tindakan Penipuan**, maka kamu berada di channel yang tepat!\n\n' +
             'Silahkan gunakan tombol di bawah ini untuk mendapatkan informasi lebih lanjut mengenai subjek yang ingin kamu pelajari!',
           color: 0xE67E22, // Orange/Warm color matching the START HERE theme
