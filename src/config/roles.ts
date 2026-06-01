@@ -202,4 +202,7 @@ export const DISCORD_CONFIG = {
   get adminRoleId() {
     return process.env.ADMIN_ROLE_ID;
   },
+  get confessChannelId() {
+    return process.env.CONFESS_CHANNEL_ID;
+  },
 };

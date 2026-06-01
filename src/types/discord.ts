@@ -23,12 +23,20 @@ export interface DiscordInteractionData {
   custom_id?: string;
   component_type?: number;
   values?: string[];
+  components?: Array<{
+    type: number;
+    components?: Array<{
+      type: number;
+      custom_id: string;
+      value: string;
+    }>;
+  }>;
 }
 
 export interface DiscordInteraction {
   id: string;
   application_id: string;
-  type: number; // 1 = PING, 2 = APPLICATION_COMMAND, 3 = MESSAGE_COMPONENT
+  type: number; // 1 = PING, 2 = APPLICATION_COMMAND, 3 = MESSAGE_COMPONENT, 5 = MODAL_SUBMIT
   data?: DiscordInteractionData;
   guild_id?: string;
   channel_id?: string;
@@ -39,8 +47,10 @@ export interface DiscordInteraction {
 }
 
 export interface DiscordResponse {
-  type: number; // 1 = PONG, 4 = CHANNEL_MESSAGE_WITH_SOURCE, 5 = DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE, 6 = DEFERRED_UPDATE_MESSAGE, 7 = UPDATE_MESSAGE
+  type: number; // 1 = PONG, 4 = CHANNEL_MESSAGE_WITH_SOURCE, 5 = DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE, 6 = DEFERRED_UPDATE_MESSAGE, 7 = UPDATE_MESSAGE, 9 = MODAL
   data?: {
+    title?: string;
+    custom_id?: string;
     tts?: boolean;
     content?: string;
     embeds?: Array<{
@@ -55,7 +65,7 @@ export interface DiscordResponse {
     components?: Array<{
       type: number; // 1 = ActionRow
       components: Array<{
-        type: number; // 2 = Button, 3 = StringSelect
+        type: number; // 2 = Button, 3 = StringSelect, 4 = TextInput
         custom_id: string;
         options?: Array<{
           label: string;
@@ -68,10 +78,14 @@ export interface DiscordResponse {
         min_values?: number;
         max_values?: number;
         disabled?: boolean;
-        style?: number; // 1 = Primary, 2 = Secondary, 3 = Success, 4 = Danger, 5 = Link
+        style?: number; // Button: 1-5, TextInput: 1 = Short, 2 = Paragraph
         label?: string;
         emoji?: { id?: string; name?: string; animated?: boolean };
         url?: string;
+        required?: boolean;
+        min_length?: number;
+        max_length?: number;
+        value?: string;
       }>;
     }>;
   };

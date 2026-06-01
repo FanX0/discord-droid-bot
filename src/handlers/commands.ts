@@ -326,3 +326,135 @@ export function handleSetupDomicileCommand(
     },
   };
 }
+
+export function handleConfessCommand(_interaction: DiscordInteraction): DiscordResponse {
+  return {
+    type: 9, // MODAL
+    data: {
+      title: "Anonymous Confession",
+      custom_id: "modal_confess",
+      components: [
+        {
+          type: 1, // ActionRow
+          components: [
+            {
+              type: 4, // TextInput
+              custom_id: "confess_message",
+              style: 2, // Paragraph
+              label: "Tulis pesan rahasiamu di sini...",
+              placeholder: "Tulis sesuatu yang ingin kamu sampaikan secara anonim...",
+              min_length: 5,
+              max_length: 1000,
+              required: true
+            }
+          ]
+        }
+      ]
+    }
+  };
+}
+
+export function handleEmbedBuilderCommand(_interaction: DiscordInteraction): DiscordResponse {
+  return {
+    type: 9, // MODAL
+    data: {
+      title: "Embed Announcement Builder",
+      custom_id: "modal_embed",
+      components: [
+        {
+          type: 1, // ActionRow
+          components: [
+            {
+              type: 4, // TextInput
+              custom_id: "embed_title",
+              style: 1, // Short
+              label: "Judul Pengumuman",
+              placeholder: "Masukkan judul pengumuman...",
+              max_length: 256,
+              required: true
+            }
+          ]
+        },
+        {
+          type: 1, // ActionRow
+          components: [
+            {
+              type: 4, // TextInput
+              custom_id: "embed_description",
+              style: 2, // Paragraph
+              label: "Isi Pengumuman / Deskripsi",
+              placeholder: "Masukkan isi pengumuman detail di sini...",
+              max_length: 2000,
+              required: true
+            }
+          ]
+        },
+        {
+          type: 1, // ActionRow
+          components: [
+            {
+              type: 4, // TextInput
+              custom_id: "embed_color",
+              style: 1, // Short
+              label: "Warna Hex (misal: #3498db atau #e74c3c)",
+              placeholder: "#3498db",
+              max_length: 7,
+              required: false
+            }
+          ]
+        },
+        {
+          type: 1, // ActionRow
+          components: [
+            {
+              type: 4, // TextInput
+              custom_id: "embed_image",
+              style: 1, // Short
+              label: "URL Gambar Banner (opsional)",
+              placeholder: "https://example.com/image.png",
+              max_length: 1000,
+              required: false
+            }
+          ]
+        }
+      ]
+    }
+  };
+}
+
+export function handleTicTacToeCommand(_interaction: DiscordInteraction): DiscordResponse {
+  // Return a clean empty 3x3 Tic Tac Toe board using buttons.
+  // We represent the board state encoded in the custom_id of the buttons:
+  // ttt_[index]_[board_state]
+  // index: 0 to 8
+  // board_state: 9 characters, e.g. "_________" where _ is empty, X is player, O is bot.
+  const emptyState = "_________";
+  
+  const createButton = (index: number) => ({
+    type: 2, // Button
+    style: 2, // Secondary (Grey)
+    custom_id: `ttt_${index}_${emptyState}`,
+    emoji: { name: "⬜" }
+  });
+
+  return {
+    type: 4, // CHANNEL_MESSAGE_WITH_SOURCE
+    data: {
+      content: "🎮 **Tic-Tac-Toe Minigame**\nBermainlah melawan Droid Bot! Kamu adalah **❌** dan Droid adalah **⭕**.\nSilahkan klik salah satu tombol di bawah untuk memulai giliranmu!",
+      components: [
+        {
+          type: 1, // ActionRow
+          components: [createButton(0), createButton(1), createButton(2)]
+        },
+        {
+          type: 1, // ActionRow
+          components: [createButton(3), createButton(4), createButton(5)]
+        },
+        {
+          type: 1, // ActionRow
+          components: [createButton(6), createButton(7), createButton(8)]
+        }
+      ]
+    }
+  };
+}

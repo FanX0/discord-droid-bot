@@ -1,7 +1,8 @@
 import { verifyDiscordSignature } from '../src/security/verify';
 import { handlePing } from '../src/handlers/ping';
-import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand, handleSetupRulesCommand, handleSetupAgeCommand, handleSetupDomicileCommand } from '../src/handlers/commands';
+import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand, handleSetupRulesCommand, handleSetupAgeCommand, handleSetupDomicileCommand, handleConfessCommand, handleEmbedBuilderCommand, handleTicTacToeCommand } from '../src/handlers/commands';
 import { handleComponentInteraction } from '../src/handlers/components';
+import { handleModalInteraction } from '../src/handlers/modals';
 import { DiscordInteraction } from '../src/types/discord';
 import { DISCORD_CONFIG } from '../src/config/roles';
 
@@ -53,7 +54,12 @@ export default async function handler(req: Request) {
         (member.permissions && (BigInt(member.permissions) & BigInt(8)) === BigInt(8))
       );
 
-      if (!isAdmin) {
+      const commandName = interaction.data?.name;
+      
+      // Public commands (everyone can use)
+      const publicCommands = ['confess', 'tictactoe'];
+      
+      if (!isAdmin && !publicCommands.includes(commandName || '')) {
         return jsonResponse({
           type: 4,
           data: {
@@ -63,7 +69,6 @@ export default async function handler(req: Request) {
         });
       }
 
-      const commandName = interaction.data?.name;
       if (commandName === 'setup-gender') {
         const response = handleSetupGenderCommand(interaction);
         return jsonResponse(response);
@@ -85,6 +90,15 @@ export default async function handler(req: Request) {
       } else if (commandName === 'setup-domicile') {
         const response = handleSetupDomicileCommand(interaction);
         return jsonResponse(response);
+      } else if (commandName === 'confess') {
+        const response = handleConfessCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'embed') {
+        const response = handleEmbedBuilderCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'tictactoe') {
+        const response = handleTicTacToeCommand(interaction);
+        return jsonResponse(response);
       }
       return jsonResponse({ error: 'Unknown command' }, 400);
     }
@@ -92,6 +106,12 @@ export default async function handler(req: Request) {
     // Interaction Type 3: MESSAGE_COMPONENT
     if (interaction.type === 3) {
       const response = await handleComponentInteraction(interaction);
+      return jsonResponse(response);
+    }
+
+    // Interaction Type 5: MODAL_SUBMIT
+    if (interaction.type === 5) {
+      const response = await handleModalInteraction(interaction);
       return jsonResponse(response);
     }
 

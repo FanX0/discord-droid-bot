@@ -13,6 +13,90 @@ export async function handleComponentInteraction(
 ): Promise<DiscordResponse> {
   const customId = interaction.data?.custom_id;
 
+  // Handle Tic-Tac-Toe Buttons
+  if (customId?.startsWith('ttt_')) {
+    const parts = customId.split('_');
+    const moveIndex = parseInt(parts[1], 10);
+    let boardState = parts[2];
+
+    // If game is already over, don't do anything
+    if (boardState.includes('W') || boardState.includes('D')) {
+      return { type: 6 }; // DEFERRED_UPDATE_MESSAGE (do nothing)
+    }
+
+    let board = boardState.split('');
+
+    // If cell is not empty, ignore
+    if (board[moveIndex] !== '_') {
+      return { type: 6 };
+    }
+
+    // User move (X)
+    board[moveIndex] = 'X';
+
+    // Check Win/Draw helper
+    const checkWin = (b: string[]) => {
+      const lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // cols
+        [0, 4, 8], [2, 4, 6]             // diagonals
+      ];
+      for (const [x, y, z] of lines) {
+        if (b[x] !== '_' && b[x] === b[y] && b[y] === b[z]) return b[x];
+      }
+      if (!b.includes('_')) return 'D'; // Draw
+      return null;
+    };
+
+    let result = checkWin(board);
+    
+    // Bot move (O) if game not over
+    if (!result) {
+      const emptyIndices = board.map((v, i) => v === '_' ? i : -1).filter(i => i !== -1);
+      if (emptyIndices.length > 0) {
+        // Very simple random AI
+        const botMove = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+        board[botMove] = 'O';
+        result = checkWin(board);
+      }
+    }
+
+    const newBoardState = board.join('');
+    
+    let content = "🎮 **Tic-Tac-Toe Minigame**\nGiliranmu! Kamu adalah **❌** dan Droid adalah **⭕**.";
+    if (result === 'X') content = "🏆 **Kamu Menang!** Hebat sekali!";
+    else if (result === 'O') content = "🤖 **Droid Menang!** Coba lagi yuk!";
+    else if (result === 'D') content = "🤝 **Seri!** Pertandingan yang sengit!";
+
+    const createButton = (index: number) => {
+      const val = board[index];
+      let emoji = "⬜";
+      let style = 2; // Secondary
+      if (val === 'X') { emoji = "❌"; style = 4; } // Danger
+      if (val === 'O') { emoji = "⭕"; style = 3; } // Success
+      
+      return {
+        type: 2, // Button
+        style,
+        custom_id: `ttt_${index}_${newBoardState}${result ? 'W' : ''}`, // add 'W' to lock board if over
+        emoji: { name: emoji },
+        disabled: val !== '_' || !!result
+      };
+    };
+
+    return {
+      type: 7, // UPDATE_MESSAGE
+      data: {
+        content,
+        components: [
+          { type: 1, components: [createButton(0), createButton(1), createButton(2)] },
+          { type: 1, components: [createButton(3), createButton(4), createButton(5)] },
+          { type: 1, components: [createButton(6), createButton(7), createButton(8)] }
+        ]
+      }
+    };
+  }
+
   // Handle Welcome Embed Button Interactions
   if (customId === "welcome_droid") {
     return {

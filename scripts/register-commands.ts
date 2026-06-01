@@ -69,6 +69,22 @@ const COMMANDS = [
     default_member_permissions: '8',
     dm_permission: false,
   },
+  {
+    name: 'confess',
+    description: 'Kirim pesan rahasia secara anonim (Aman & Rahasia)',
+    dm_permission: false,
+  },
+  {
+    name: 'embed',
+    description: 'Bikin pengumuman keren bergaya Rich Embed (Khusus Admin)',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
+  {
+    name: 'tictactoe',
+    description: 'Main game Tic-Tac-Toe melawan Droid Bot langsung di chat',
+    dm_permission: false,
+  },
 ];
 
 async function registerCommands() {

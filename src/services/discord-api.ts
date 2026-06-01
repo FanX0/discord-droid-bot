@@ -43,3 +43,10 @@ export async function removeRoleFromMember(guildId: string, userId: string, role
     },
   });
 }
+
+export async function sendMessageToChannel(channelId: string, data: any): Promise<void> {
+  await discordRequest(`/channels/${channelId}/messages`, {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
