@@ -3,6 +3,7 @@ import { handlePing } from '../src/handlers/ping';
 import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand } from '../src/handlers/commands';
 import { handleComponentInteraction } from '../src/handlers/components';
 import { DiscordInteraction } from '../src/types/discord';
+import { DISCORD_CONFIG } from '../src/config/roles';
 
 export const config = {
   runtime: 'edge',
@@ -43,8 +44,12 @@ export default async function handler(req: Request) {
     // Interaction Type 2: APPLICATION_COMMAND
     if (interaction.type === 2) {
       const member = interaction.member;
+      
+      // Professional Standard 2: Fetch Role ID from Environment Variables
+      const configuredAdminRole = DISCORD_CONFIG.adminRoleId;
+      
       const isAdmin = member && (
-        member.roles.includes('634182258881986580') ||
+        (configuredAdminRole && member.roles.includes(configuredAdminRole)) ||
         (member.permissions && (BigInt(member.permissions) & BigInt(8)) === BigInt(8))
       );
 

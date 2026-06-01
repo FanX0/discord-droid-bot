@@ -92,4 +92,7 @@ export const DISCORD_CONFIG = {
   get guildId() {
     return process.env.GUILD_ID; // Optional (mainly for registering guild command locally)
   },
+  get adminRoleId() {
+    return process.env.ADMIN_ROLE_ID;
+  },
 };
