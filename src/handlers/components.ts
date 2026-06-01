@@ -5,6 +5,44 @@ import { addRoleToMember, removeRoleFromMember } from '../services/discord-api';
 export async function handleComponentInteraction(interaction: DiscordInteraction): Promise<DiscordResponse> {
   const customId = interaction.data?.custom_id;
 
+  // Handle Welcome Embed Button Interactions
+  if (customId === 'welcome_droid') {
+    return {
+      type: 4,
+      data: {
+        flags: 64,
+        content: `🌌 **Tentang Droid:**\nDroid adalah server komunitas luar biasa tempat berkumpulnya kreator, gamer, seniman, dan penggemar anime! Di sini kamu bisa berdiskusi, berbagi hobi, dan bertemu teman baru dengan minat yang sama.`,
+      },
+    };
+  }
+  if (customId === 'welcome_roles_info') {
+    return {
+      type: 4,
+      data: {
+        flags: 64,
+        content: `👤 **Panduan Roles Info:**\nKamu bisa menyesuaikan profile kamu dengan mengambil roles di channel khusus kami:\n- Ambil gender role kamu di command \`/setup-gender\`.\n- Ambil gaming catalog role kamu di \`/setup-mobile-games\` & \`/setup-pc-games\`!\n\nSetiap role yang kamu pilih akan membuka akses ke channel dan forum spesifik yang seru!`,
+      },
+    };
+  }
+  if (customId === 'welcome_official_link') {
+    return {
+      type: 4,
+      data: {
+        flags: 64,
+        content: `🔗 **Official Links:**\n- 🌐 Website: [Droid](https://droid.com)\n- 📱 TikTok: [@droid](https://tiktok.com/@droid)\n- 📸 Instagram: [@droid](https://instagram.com/droid)\n- 🎥 YouTube: [Droid Channel](https://youtube.com/@droid)`,
+      },
+    };
+  }
+  if (customId === 'welcome_anti_scam') {
+    return {
+      type: 4,
+      data: {
+        flags: 64,
+        content: `🚨 **Pencegahan Scam & Keamanan:**\nKeamanan kamu adalah prioritas utama kami. Harap selalu ingat tips keamanan penting berikut:\n1. ⚠️ **JANGAN PERNAH** membagikan password, kode autentikasi token, atau OTP kamu kepada siapa pun.\n2. 🚫 **Waspada DM mencurigakan** dari bot palsu atau pengguna tak dikenal yang menawarkan hadiah gratis (Nitro gratis, crypto, dll).\n3. 🛡️ Staff resmi **TIDAK AKAN PERNAH** meminta password kamu atau menyuruh kamu mengklik link mencurigakan.\n4. ⚠️ Laporkan langsung ke Moderator jika menemukan indikasi penipuan!`,
+      },
+    };
+  }
+
   let selectedRolesConfig: readonly { label: string; value: string; description: string; emoji: { name: string } }[] = [];
 
   if (customId === 'role_select_gender') {

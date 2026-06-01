@@ -62,6 +62,8 @@ export const BANNERS = {
     "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316883/1261b8f2-6f69-4986-93f5-a8d25f2ed794_hlfuhd.png", // Mobile/General gaming banner
   PC_GAMES:
     "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316991/84073775-d173-4677-8722-b5d1470c4516_a226aa.png", // PC gaming banner
+  START_HERE:
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200", // Default beautiful Start Here banner
 } as const;
 
 export const DISCORD_CONFIG = {

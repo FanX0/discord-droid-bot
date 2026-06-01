@@ -28,9 +28,15 @@ import { DISCORD_CONFIG } from '../src/config/roles';
 
 const COMMANDS = [
   {
+    name: 'setup-start',
+    description: 'Spawns the welcome message embed with interactive info buttons',
+    default_member_permissions: '8', // ADMINISTRATOR permission required to setup roles
+    dm_permission: false,
+  },
+  {
     name: 'setup-gender',
     description: 'Spawns the dropdown select menu for self-assigning gender roles',
-    default_member_permissions: '8', // ADMINISTRATOR permission required to setup roles
+    default_member_permissions: '8',
     dm_permission: false,
   },
   {

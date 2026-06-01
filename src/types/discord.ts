@@ -54,9 +54,9 @@ export interface DiscordResponse {
     components?: Array<{
       type: number; // 1 = ActionRow
       components: Array<{
-        type: number; // 3 = StringSelect
+        type: number; // 2 = Button, 3 = StringSelect
         custom_id: string;
-        options: Array<{
+        options?: Array<{
           label: string;
           value: string;
           description?: string;
@@ -67,6 +67,10 @@ export interface DiscordResponse {
         min_values?: number;
         max_values?: number;
         disabled?: boolean;
+        style?: number; // 1 = Primary, 2 = Secondary, 3 = Success, 4 = Danger, 5 = Link
+        label?: string;
+        emoji?: { id?: string; name?: string; animated?: boolean };
+        url?: string;
       }>;
     }>;
   };

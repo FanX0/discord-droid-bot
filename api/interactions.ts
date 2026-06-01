@@ -1,6 +1,6 @@
 import { verifyDiscordSignature } from '../src/security/verify';
 import { handlePing } from '../src/handlers/ping';
-import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand } from '../src/handlers/commands';
+import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand } from '../src/handlers/commands';
 import { handleComponentInteraction } from '../src/handlers/components';
 import { DiscordInteraction } from '../src/types/discord';
 
@@ -51,6 +51,9 @@ export default async function handler(req: Request) {
         return jsonResponse(response);
       } else if (commandName === 'setup-pc-games') {
         const response = handleSetupPcGamesCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'setup-start') {
+        const response = handleSetupStartCommand(interaction);
         return jsonResponse(response);
       }
       return jsonResponse({ error: 'Unknown command' }, 400);
