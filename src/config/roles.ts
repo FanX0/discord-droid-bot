@@ -205,4 +205,10 @@ export const DISCORD_CONFIG = {
   get confessChannelId() {
     return process.env.CONFESS_CHANNEL_ID;
   },
+  get verifiedRoleId() {
+    return process.env.VERIFIED_ROLE_ID;
+  },
+  get galleryChannelId() {
+    return process.env.GALLERY_CHANNEL_ID;
+  },
 };
