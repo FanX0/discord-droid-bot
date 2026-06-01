@@ -5,6 +5,12 @@ import { handleSetupRolesCommand } from '../src/handlers/commands';
 import { handleComponentInteraction } from '../src/handlers/components';
 import { DiscordInteraction } from '../src/types/discord';
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 // Helper to get raw request body from Node.js IncomingMessage
 async function getRawBody(req: IncomingMessage): Promise<string> {
   return new Promise((resolve, reject) => {
