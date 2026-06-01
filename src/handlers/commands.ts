@@ -150,6 +150,7 @@ export function handleSetupStartCommand(
             "Selamat datang di **Droid Server**!\n\n" +
             "Channel ini bertujuan untuk membantu para **Droids** untuk memahami lebih lanjut mengenai **Droid** dan menjawab pertanyaan yang sering diajukan!\n\n" +
             "**Let's get started!**\n" +
+            "Jika kamu belum membaca **Rules** kami, silahkan kunjungi <#1511010770580799618>\n\n" +
             "Untuk memilih role, Silahkan pilih Genre Catalog yang tersedia di sini: <#827508832041173042>\n\n" +
             "Jika kamu ingin check **Official Links** kita, mengetahui apa itu Droid, memahami lebih lanjut server **Droid** dan mendapatkan beberapa tips yang sangat berguna untuk **Mencegah Tindakan Penipuan**, maka kamu berada di channel yang tepat!\n\n" +
             "Silahkan gunakan tombol di bawah ini untuk mendapatkan informasi lebih lanjut mengenai subjek yang ingin kamu pelajari!",
@@ -208,22 +209,12 @@ export function handleSetupRulesCommand(
         {
           title: "📜 SERVER RULES | DROID SERVER",
           description:
-            "Selamat datang di **Droid Server**! Demi kenyamanan bersama seluruh anggota (**Droids**), harap patuhi peraturan resmi kami di bawah ini:\n\n" +
-            "1. 🤝 **Saling Menghormati (Respect Each Other)**\n" +
-            "Perlakukan seluruh anggota dengan hormat. Dilarang keras melakukan pelecehan, intimidasi, ujaran kebencian, diskriminasi (SARA), atau perundungan.\n\n" +
-            "2. 🚫 **No Drama & Toxic Behavior**\n" +
-            "Jaga atmosfer server agar tetap positif dan kondusif. Hindari memicu perdebatan yang tidak sehat atau drama antar anggota.\n\n" +
-            "3. 🔞 **No NSFW Content**\n" +
-            "Dilarang keras membagikan konten berbau pornografi, kekerasan (gore), atau konten sensitif lainnya dalam bentuk apa pun (teks, gambar, video, link).\n\n" +
-            "4. 💬 **Gunakan Channel Sesuai Fungsinya**\n" +
-            "Pastikan Anda mengirimkan pesan di channel yang tepat (misal: bot musik hanya di text channel musik, obrolan umum di #general).\n\n" +
-            "5. 📢 **No Spamming & Self-Promotion**\n" +
-            "Dilarang melakukan spamming (teks, emoji, mention massal) dan membagikan link promosi server Discord lain atau iklan pribadi tanpa izin staff.\n\n" +
-            "6. 🛡️ **Pencegahan Scam & Keamanan**\n" +
-            "Dilarang membagikan tautan mencurigakan (phishing, scam, gift Nitro palsu). Selalu jaga kerahasiaan data pribadi Anda!\n\n" +
-            "---\n" +
-            "*Pelanggaran terhadap peraturan di atas akan dikenakan tindakan tegas mulai dari **Mute, Kick, hingga Permanent Ban** oleh Moderator.*\n\n" +
-            "Silahkan klik tombol **Saya Setuju** di bawah ini untuk menyetujui peraturan server kami!",
+            "yo welcome to **Droid Server** 🚀\n\n" +
+            "ini tempat buat santai aja sih. mau ngobrol, mabar, cari temen, ikut rame, atau cuma diem-diem baca chat juga bebas wkwk\n\n" +
+            "gak usah terlalu kaku di sini. anggap aja kayak basecamp online buat nongkrong, bercanda, bahas game, atau random talk pas lagi gabut.\n\n" +
+            "kalau baru masuk dan masih bingung mau mulai dari mana, santai aja. semua juga pernah jadi anak baru 😭\n\n" +
+            "intinya enjoy aja, bawa vibes yang enak, dan jangan takut buat nyapa duluan.\n\n" +
+            "klik **Saya Setuju** di bawah buat dapet role **Verified** terus langsung gas masuk ke server 🎉",
           color: 0xe74c3c, // Red for Rules
           image: {
             url: BANNERS.RULES,
