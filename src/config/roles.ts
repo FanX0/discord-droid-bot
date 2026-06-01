@@ -159,18 +159,18 @@ export const DOMICILE_ROLES = [
 
 export const BANNERS = {
   GENDER:
-    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316666/429c98cd-ef8b-4f74-9a21-be0028504816_zjdwkw.png", // Elegant community/profile banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322919/e839da38-2df6-4989-887c-bc584e1a7e0c_zalvzf.png", // Elegant community/profile banner
   MOBILE_GAMES:
-    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316883/1261b8f2-6f69-4986-93f5-a8d25f2ed794_hlfuhd.png", // Mobile/General gaming banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322918/b402b410-9d5b-4ee3-bd41-26c3b6b87425_jkjct1.png", // Mobile/General gaming banner
   PC_GAMES:
-    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316991/84073775-d173-4677-8722-b5d1470c4516_a226aa.png", // PC gaming banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322923/49a5302e-c23c-4b75-a032-e3c79bb75763_pck5wz.png", // PC gaming banner
   START_HERE:
-    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780318031/43610608-c8db-4dd4-8db2-f8d2eb597eb5_bgaopy.png", // Default beautiful Start Here banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322910/1a66c1b4-08b9-4f76-8db4-6a08164aaffa_egdqnx.png", // Default beautiful Start Here banner
   RULES:
-    "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=1200", // Elegant dark gamer gradient banner for rules
-  AGE: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&q=80&w=1200", // Elegant dark theme for age banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322915/f7758d89-93b8-4e7f-be2b-c7d305c413ae_ed9gom.png", // Elegant dark gamer gradient banner for rules
+  AGE: "https://res.cloudinary.com/dmdbork5l/image/upload/v1780322931/bc610c33-68c7-45d7-8c42-8c4ed074d351_k37ol5.png", // Elegant dark theme for age banner
   DOMICILE:
-    "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200", // Elegant dark theme for domicile banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780323040/54054880-a6dd-421d-9a76-f2865b49ee95_llwe9j.png", // Elegant dark theme for domicile banner
 } as const;
 
 export const DISCORD_CONFIG = {
