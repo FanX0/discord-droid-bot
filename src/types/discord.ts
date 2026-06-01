@@ -13,6 +13,7 @@ export interface DiscordMember {
   nick: string | null;
   mute: boolean;
   deaf: boolean;
+  permissions?: string;
 }
 
 export interface DiscordInteractionData {

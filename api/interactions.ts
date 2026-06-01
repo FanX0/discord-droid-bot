@@ -42,6 +42,22 @@ export default async function handler(req: Request) {
 
     // Interaction Type 2: APPLICATION_COMMAND
     if (interaction.type === 2) {
+      const member = interaction.member;
+      const isAdmin = member && (
+        member.roles.includes('634182258881986580') ||
+        (member.permissions && (BigInt(member.permissions) & BigInt(8)) === BigInt(8))
+      );
+
+      if (!isAdmin) {
+        return jsonResponse({
+          type: 4,
+          data: {
+            flags: 64, // Ephemeral
+            content: '❌ Kamu tidak memiliki izin (Role Admin/Staff) untuk menggunakan perintah setup ini!',
+          },
+        });
+      }
+
       const commandName = interaction.data?.name;
       if (commandName === 'setup-gender') {
         const response = handleSetupGenderCommand(interaction);
