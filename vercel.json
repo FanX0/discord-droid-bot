@@ -2,6 +2,9 @@
   "functions": {
     "api/interactions.ts": {
       "maxDuration": 10
+    },
+    "api/announcements.ts": {
+      "maxDuration": 10
     }
   }
 }
