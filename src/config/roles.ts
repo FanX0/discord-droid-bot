@@ -57,11 +57,11 @@ export const PC_GAME_ROLES = [
 
 export const BANNERS = {
   GENDER:
-    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200", // Elegant community/profile banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316666/429c98cd-ef8b-4f74-9a21-be0028504816_zjdwkw.png", // Elegant community/profile banner
   MOBILE_GAMES:
-    "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80&w=1200", // Mobile/General gaming banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316883/1261b8f2-6f69-4986-93f5-a8d25f2ed794_hlfuhd.png", // Mobile/General gaming banner
   PC_GAMES:
-    "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1200", // PC gaming banner
+    "https://res.cloudinary.com/dmdbork5l/image/upload/v1780316991/84073775-d173-4677-8722-b5d1470c4516_a226aa.png", // PC gaming banner
 } as const;
 
 export const DISCORD_CONFIG = {
