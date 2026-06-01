@@ -3,6 +3,8 @@ import {
   GENDER_ROLES,
   MOBILE_GAME_ROLES,
   PC_GAME_ROLES,
+  AGE_ROLES,
+  DOMICILE_ROLES,
 } from "../config/roles";
 import { addRoleToMember, removeRoleFromMember } from "../services/discord-api";
 
@@ -66,6 +68,15 @@ export async function handleComponentInteraction(
       },
     };
   }
+  if (customId === 'rules_agree') {
+    return {
+      type: 4,
+      data: {
+        flags: 64,
+        content: `🎉 **Terima kasih telah membaca dan menyetujui Rules!**\nSelamat datang secara resmi di **Droid Server**! Silahkan jelajahi server, ikuti diskusi, patuhi peraturan, dan bersenang-senanglah bersama anggota lainnya! 🚀`,
+      },
+    };
+  }
 
   let selectedRolesConfig: readonly {
     label: string;
@@ -80,6 +91,10 @@ export async function handleComponentInteraction(
     selectedRolesConfig = MOBILE_GAME_ROLES;
   } else if (customId === "role_select_pc") {
     selectedRolesConfig = PC_GAME_ROLES;
+  } else if (customId === "role_select_age") {
+    selectedRolesConfig = AGE_ROLES;
+  } else if (customId === "role_select_domicile") {
+    selectedRolesConfig = DOMICILE_ROLES;
   } else {
     return {
       type: 4,

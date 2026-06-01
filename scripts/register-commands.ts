@@ -51,6 +51,24 @@ const COMMANDS = [
     default_member_permissions: '8',
     dm_permission: false,
   },
+  {
+    name: 'setup-rules',
+    description: 'Spawns the elegant official rules panel with a green Agreement button',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
+  {
+    name: 'setup-age',
+    description: 'Spawns the dropdown select menu for self-assigning age roles',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
+  {
+    name: 'setup-domicile',
+    description: 'Spawns the dropdown select menu for self-assigning domicile roles',
+    default_member_permissions: '8',
+    dm_permission: false,
+  },
 ];
 
 async function registerCommands() {

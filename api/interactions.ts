@@ -1,6 +1,6 @@
 import { verifyDiscordSignature } from '../src/security/verify';
 import { handlePing } from '../src/handlers/ping';
-import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand } from '../src/handlers/commands';
+import { handleSetupGenderCommand, handleSetupMobileGamesCommand, handleSetupPcGamesCommand, handleSetupStartCommand, handleSetupRulesCommand, handleSetupAgeCommand, handleSetupDomicileCommand } from '../src/handlers/commands';
 import { handleComponentInteraction } from '../src/handlers/components';
 import { DiscordInteraction } from '../src/types/discord';
 import { DISCORD_CONFIG } from '../src/config/roles';
@@ -75,6 +75,15 @@ export default async function handler(req: Request) {
         return jsonResponse(response);
       } else if (commandName === 'setup-start') {
         const response = handleSetupStartCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'setup-rules') {
+        const response = handleSetupRulesCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'setup-age') {
+        const response = handleSetupAgeCommand(interaction);
+        return jsonResponse(response);
+      } else if (commandName === 'setup-domicile') {
+        const response = handleSetupDomicileCommand(interaction);
         return jsonResponse(response);
       }
       return jsonResponse({ error: 'Unknown command' }, 400);
